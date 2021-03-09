@@ -9,7 +9,7 @@ The example project which we will be scripting is a WS2812B RGB LED clock powere
 The main part where scripting can be very helpful is the placement of the 60 WS2812B LEDs. 
 Futhermore, this guide also highlights some design considerations when using scripting within Kicad. 
 ## Schematic Notes 
-Open the project `Kicad_workshop_volundr_clock.zip`{:.language-python} given  with this guide, and use the unarchive function of Kicad. You can browse the schematic to view which components we will be using in our design. 
+Open the project `Kicad_workshop_volundr_clock.zip` given  with this guide, and use the unarchive function of Kicad. You can browse the schematic to view which components we will be using in our design. 
 Some notes on the schematic: the design is made out of hierarchical sheets which has some advantages for sripting and using exsiting plugins. 
 For instance a simple copy of a drawn layout can be copied with the duplicate shortcut (CTRL+D), however in this case the references and netnames are not updated.
 For duplicating layouts where the refereces and netnames are updated we can use a sripts which need hierachical sheets to work.
@@ -29,16 +29,16 @@ Now we can start using the module first we need to tell which board were working
 board=GetBoard()
 ```
 The PCB only has one component so far the ESP8266 which we will be moving with a some commands to a desired location and orientation.
-We will be using the `GetFootprint()`{:.language-python} function, which needs `'wxPoint' aPosition`, `'PCB_LAYER_ID' aActiveLayer` and `'bool' aVisibleOnly`{:.language-python} as arguments.
-So first save the position as a `wxPoint`{:.language-python} which uses the internal Kicad reference of nanometers. 
-We can use two methods to transform from mm to nm:`FromMM()`{:.language-python} and `wxPointMM()`{:.language-python} which coverses both x and y in one command. We will use the last one.
+We will be using the `GetFootprint()` function, which needs `'wxPoint' aPosition`, `'PCB_LAYER_ID' aActiveLayer` and `'bool' aVisibleOnly` as arguments.
+So first save the position as a `wxPoint` which uses the internal Kicad reference of nanometers. 
+We can use two methods to transform from mm to nm:`FromMM()` and `wxPointMM()` which coverses both x and y in one command. We will use the last one.
 Our ESP8266 module is at coordinates (0,0) which is in the top left corner which is due to legacy conventions in coordinate systems.
 In Kicad 6 the coordinate system can be changed to user preferences.
 ```python
 esp8266pos=wxPointMM(0,0)   
 ```
-To get the `LayerID`{:.pyhton} we will use the function `GetLayerID('wxString' aLayerName)`{:.language-python} which takes the the layername given in the editor as argument. 
-The last argument we just set as `True`{:.language-python}, because our ESP8266 module is visible in the editor.
+To get the `LayerID`{:.pyhton} we will use the function `GetLayerID('wxString' aLayerName)` which takes the the layername given in the editor as argument. 
+The last argument we just set as `True`, because our ESP8266 module is visible in the editor.
 The footprint object can be saved so we can interact with it further.
 Tying it all together.
 ```python
@@ -49,13 +49,13 @@ We can now use the the footprint object to change the position to somewhere in t
 esp8266.SetPosition(wxPointMM(100,100))
 ```
 Nothing changes after firing the command. To see the changes also apear in the editor. 
-PCBnew must be given a sign that the display must be refreshed by running `Refresh()`{:.language-python}
+PCBnew must be given a sign that the display must be refreshed by running `Refresh()`
 ## Making the script
 Now that you have some basic understanding of the scripting process we will take our next to make a script.
 Some things you may have noticed is that if you typed the commands themself that there is no previous command button, but there is autocomple.
 For the next part we will be using some for-loops to speed things up and really get scripting. To make this easier we will be using an external editor.
 You can use your favorite editor. If you don't have one VScode or Notepad++ are good starting positions.
-- Make a file `place_leds.py`{:.language-python} in save it in an path without spaces(for windows make a direcroy on C:blabla).
+- Make a file `place_leds.py` in save it in an path without spaces(for windows make a direcroy on C:blabla).
 - Open it in the editor.
 - Place the following code in the file.
 
@@ -70,11 +70,11 @@ Refresh()
 
 - Save the file.
 - Save the PCB and close and open the Scripting console.
-- Paste the following in the scripting console `exec(open("absolute path to script").read())`{:python}(Windows: `exec(open("C://blabla/place_leds.py").read())`{:.language-python}
+- Paste the following in the scripting console `exec(open("absolute path to script").read())`{:python}(Windows: `exec(open("C://blabla/place_leds.py").read())`
 Now the ESP8266 should be moved to (50,50).
 Till now we have only played with one footprint, now import all footprints onto the PCB.
-Getting al the needed footprints by position is not very practical so we want to get them by reference with the function `FindModuleByReference()`{:.language-python}.
-Note: there is a discrepancy between the Python API and the implementation, so `FindModuleByReference()`{:.language-python} is used instead of `FindFootprintByReference()`{:.language-python}
+Getting al the needed footprints by position is not very practical so we want to get them by reference with the function `FindModuleByReference()`.
+Note: there is a discrepancy between the Python API and the implementation, so `FindModuleByReference()` is used instead of `FindFootprintByReference()`
 Using a for-loop we can process all the footprints we want to change.  
 The below example places all the WS2812 LEDs in a circle with the correct orientation.
 ```python
@@ -145,15 +145,15 @@ Try to finish the script by adding:
 4. A track between the GND pin of the cap and the via. 
 5. (optional) Change variables to the layout better.
 
-Tip: to get the position of a pad the `GetCenter()`{:.language-python} function can be used.
+Tip: to get the position of a pad the `GetCenter()` function can be used.
 If you are stuck you can look at the final script in the project.
 # Using plugins
 Plugins are small script that can be used within pcbnew to speed up some actions or to extend pcbnew's functionality.
 For instance pcbnew does not have capabilities to import custom copper fils. So we will use an external plugin to do this.
 
-An Openscad script `copper_fills.scad`{:.language-python} is used to generate the copper fill geometry. Due to the limitations on how the copper fill is generated, the outer ring needs a small gap.
-The Plugin is also located in the project folder as `DXFZonePlugin`{:.language-python} to install it copy it to the Plugins Folder.
-The location of this folder can be found in pcbnew by Preferencs &rarr Configure Paths `KICAD_PLUGIN_DIR`{:.language-python}.
+An Openscad script `copper_fills.scad` is used to generate the copper fill geometry. Due to the limitations on how the copper fill is generated, the outer ring needs a small gap.
+The Plugin is also located in the project folder as `DXFZonePlugin` to install it copy it to the Plugins Folder.
+The location of this folder can be found in pcbnew by Preferencs &rarr Configure Paths `KICAD_PLUGIN_DIR`.
 After copying it in the folder the plugin should show up in: 
 
 Tools -> External Plugins -> Convert a DXF to a zone (after clicking refresh plugins in the same menu)
