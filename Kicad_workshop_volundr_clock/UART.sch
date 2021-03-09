@@ -1,0 +1,249 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 11 11
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Interface_USB:CH340G U3
+U 1 1 60506252
+P 5400 3200
+F 0 "U3" H 5550 3750 50  0000 C CNN
+F 1 "CH340G" H 5650 2650 50  0000 C CNN
+F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 5450 2650 50  0001 L CNN
+F 3 "http://www.datasheet5.com/pdf-local-2195953" H 5050 4000 50  0001 C CNN
+	1    5400 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0192
+U 1 1 60506EAA
+P 5400 2250
+F 0 "#PWR0192" H 5400 2100 50  0001 C CNN
+F 1 "+5V" H 5415 2423 50  0000 C CNN
+F 2 "" H 5400 2250 50  0001 C CNN
+F 3 "" H 5400 2250 50  0001 C CNN
+	1    5400 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 2250 5300 2600
+$Comp
+L power:GND #PWR0195
+U 1 1 60509617
+P 5400 3900
+F 0 "#PWR0195" H 5400 3650 50  0001 C CNN
+F 1 "GND" H 5405 3727 50  0000 C CNN
+F 2 "" H 5400 3900 50  0001 C CNN
+F 3 "" H 5400 3900 50  0001 C CNN
+	1    5400 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 3900 5400 3800
+NoConn ~ 5000 2900
+Text HLabel 6200 2800 2    50   Output ~ 0
+TXD
+Text HLabel 6200 2900 2    50   Input ~ 0
+RXD
+Text HLabel 7300 2775 2    50   Output ~ 0
+RESETn
+$Comp
+L Device:C_Small C64
+U 1 1 6050C0DB
+P 5100 2350
+F 0 "C64" H 5150 2400 50  0000 L CNN
+F 1 "100n" H 4900 2300 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 5100 2350 50  0001 C CNN
+F 3 "~" H 5100 2350 50  0001 C CNN
+	1    5100 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 2250 5300 2250
+Wire Wire Line
+	5400 2250 5400 2600
+Text Label 5200 2250 0    50   ~ 0
+V3
+$Comp
+L power:GND #PWR0193
+U 1 1 6050E3D2
+P 5100 2500
+F 0 "#PWR0193" H 5100 2250 50  0001 C CNN
+F 1 "GND" H 5100 2350 50  0000 C CNN
+F 2 "" H 5100 2500 50  0001 C CNN
+F 3 "" H 5100 2500 50  0001 C CNN
+	1    5100 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 2500 5100 2450
+$Comp
+L Device:R_Small_US R8
+U 1 1 6050F946
+P 6000 2800
+F 0 "R8" V 5950 2900 50  0000 C CNN
+F 1 "470" V 5900 2800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6000 2800 50  0001 C CNN
+F 3 "~" H 6000 2800 50  0001 C CNN
+	1    6000 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small_US R9
+U 1 1 6050FBD9
+P 6000 2900
+F 0 "R9" V 6050 3000 50  0000 C CNN
+F 1 "470" V 6100 2900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6000 2900 50  0001 C CNN
+F 3 "~" H 6000 2900 50  0001 C CNN
+	1    6000 2900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5800 2800 5900 2800
+Wire Wire Line
+	5800 2900 5900 2900
+Wire Wire Line
+	6100 2800 6200 2800
+Wire Wire Line
+	6100 2900 6200 2900
+$Comp
+L Device:Crystal_GND24_Small Y1
+U 1 1 60511959
+P 4300 3400
+F 0 "Y1" H 4444 3446 50  0000 L CNN
+F 1 "12MHz" H 4444 3355 50  0000 L CNN
+F 2 "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" H 4300 3400 50  0001 C CNN
+F 3 "~" H 4300 3400 50  0001 C CNN
+	1    4300 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 3400 5000 3400
+Wire Wire Line
+	5000 3600 4200 3600
+Wire Wire Line
+	4200 3600 4200 3400
+Text Label 4750 3400 0    50   ~ 0
+XI
+Text Label 4750 3600 0    50   ~ 0
+XO
+$Comp
+L power:GND #PWR0194
+U 1 1 60512EE3
+P 4300 3700
+F 0 "#PWR0194" H 4300 3450 50  0001 C CNN
+F 1 "GND" H 4305 3527 50  0000 C CNN
+F 2 "" H 4300 3700 50  0001 C CNN
+F 3 "" H 4300 3700 50  0001 C CNN
+	1    4300 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 3525 4300 3700
+Wire Wire Line
+	4300 3275 4300 3525
+Connection ~ 4300 3525
+$Comp
+L Transistor_BJT:S8050 Q2
+U 1 1 60517C56
+P 7075 3825
+F 0 "Q2" H 7265 3779 50  0000 L CNN
+F 1 "S8050" H 7265 3870 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 7275 3750 50  0001 L CIN
+F 3 "http://www.unisonic.com.tw/datasheet/S8050.pdf" H 7075 3825 50  0001 L CNN
+	1    7075 3825
+	1    0    0    1   
+$EndComp
+$Comp
+L Transistor_BJT:S8050 Q1
+U 1 1 60518FE8
+P 7075 3075
+F 0 "Q1" H 7265 3121 50  0000 L CNN
+F 1 "S8050" H 7265 3030 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 7275 3000 50  0001 L CIN
+F 3 "http://www.unisonic.com.tw/datasheet/S8050.pdf" H 7075 3075 50  0001 L CNN
+	1    7075 3075
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R10
+U 1 1 60519A94
+P 6650 3075
+F 0 "R10" V 6700 3175 50  0000 C CNN
+F 1 "10K" V 6750 3075 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6650 3075 50  0001 C CNN
+F 3 "~" H 6650 3075 50  0001 C CNN
+	1    6650 3075
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6750 3075 6875 3075
+Wire Wire Line
+	6750 3825 6875 3825
+$Comp
+L Device:R_Small_US R11
+U 1 1 60519889
+P 6650 3825
+F 0 "R11" V 6700 3925 50  0000 C CNN
+F 1 "10K" V 6750 3825 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" H 6650 3825 50  0001 C CNN
+F 3 "~" H 6650 3825 50  0001 C CNN
+	1    6650 3825
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5800 3500 6250 3500
+Wire Wire Line
+	6250 3500 6250 3075
+Wire Wire Line
+	6250 3075 6500 3075
+Wire Wire Line
+	5800 3600 6250 3600
+Wire Wire Line
+	6250 3600 6250 3825
+Wire Wire Line
+	6250 3825 6500 3825
+Wire Wire Line
+	7300 2775 7175 2775
+Wire Wire Line
+	7175 2775 7175 2875
+Text HLabel 7325 4175 2    50   Output ~ 0
+DTR
+Wire Wire Line
+	7175 4025 7175 4175
+Wire Wire Line
+	7175 4175 7325 4175
+Wire Wire Line
+	7175 3275 6725 3275
+Wire Wire Line
+	6725 3275 6500 3825
+Connection ~ 6500 3825
+Wire Wire Line
+	6500 3825 6550 3825
+Wire Wire Line
+	7175 3625 6725 3625
+Wire Wire Line
+	6725 3625 6500 3075
+Connection ~ 6500 3075
+Wire Wire Line
+	6500 3075 6550 3075
+Text HLabel 4550 3100 0    50   Input ~ 0
+USB_D_P
+Text HLabel 4550 3200 0    50   Input ~ 0
+USB_D_N
+Wire Wire Line
+	4550 3200 5000 3200
+Wire Wire Line
+	4550 3100 5000 3100
+$EndSCHEMATC
