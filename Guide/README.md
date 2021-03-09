@@ -146,6 +146,7 @@ Try to finish the script by yourself by adding:
 3. A via close to the GND pin of the capacitor.
 4. A track between the GND pin of the cap and the via. 
 5. (optional) Change variables to the layout better.
+
 Tip: to get the position of a pad the `GetCenter()` function can be used.
 Not all information is given and there are more ways to achieve this result. 
 The API reference can be used to look for the missing information.
