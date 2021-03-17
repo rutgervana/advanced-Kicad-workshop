@@ -63,7 +63,7 @@ You can use your favorite editor. If you don't have one VScode or Notepad++ are 
 from pcbnew import * 
 board=GetBoard()
 esp8266pos=wxPointMM(100,100)   
-esp8266=board.GetFootprint(esp8266pos,GetLayerID("F.Cu"),True)
+esp8266=board.GetFootprint(esp8266pos,board.GetLayerID("F.Cu"),True)
 esp8266.SetPosition(wxPointMM(50,50))
 Refresh()
 ```
